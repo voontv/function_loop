@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Exercise3 {
+public class Exercise4 {
 
         public static void main(String args[]) {
                 Scanner scanner = new Scanner(System.in);
@@ -24,18 +24,25 @@ public class Exercise3 {
 
         public static String isListDigitPrime (int a) {
                 StringBuilder builder = new StringBuilder();
-                int i =2;
-                
+                int i = 2;
+                int count = 0;
                 while (a>=i) {
                         if ((a % i == 0) && isPrime (i)) {
-                                if(a == i)
-                                {
-                                        builder = builder.append(i);
-                                } else {
-                                        builder = builder.append(i + " * ");
-                                }
+                                count++;
                                 a = a/i;
-                        } else {
+                        }
+                        if (a % i != 0 && isPrime (i)) {
+                                String s = i +"";
+                                if (count > 1) {
+                                        s+="^"+count;
+                                }
+
+                                if(a < i){
+                                        builder = builder.append(s);
+                                } else {
+                                        builder = builder.append(s + " * ");
+                                }
+                                count = 0;
                                 i++;
                         }
                 }
